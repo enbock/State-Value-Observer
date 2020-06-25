@@ -6,6 +6,7 @@ version: 2
 
 defaults: &defaults
   working_directory: ~/repo
+
   docker:
     - image: circleci/node:latest
 
@@ -31,13 +32,15 @@ jobs:
 
       # run tests!
       - run: yarn test
+      - persist_to_workspace:
+          root: ~
+          path: repo
 
   deploy:
     <<: *defaults
     filters:
       branches:
-        only:
-          - master
+        only: master
 
     steps:
       - attach_workspace:
