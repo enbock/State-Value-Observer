@@ -6,7 +6,8 @@
   "license": "MIT",
   "author": "Endre Bock <npm.dev@itbock.de>",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "build": "npx tsc --build tsconfig.json -v",
