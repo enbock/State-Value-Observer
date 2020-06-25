@@ -4,9 +4,6 @@
 name: Publishing
 
 on:
-  push:
-    branches-ignore:
-      - master
   release:
     types: [created]
 
