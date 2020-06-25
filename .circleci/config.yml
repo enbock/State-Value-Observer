@@ -5,7 +5,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: /tmp/repo
+  working_directory: ~/repo
   docker:
     - image: circleci/node:latest
 
@@ -14,8 +14,6 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -23,17 +21,11 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
       - run: yarn test
-      - persist_to_workspace:
-          root: /tmp/repo
-          path: repo
 
   deploy:
     <<: *defaults
@@ -42,9 +34,8 @@ jobs:
         only: master
 
     steps:
-      - attach_workspace:
-          at: ~/repo
-
+      - checkout
+      - run: yarn install
       - run: yarn run build
       - run:
           name: Authenticate with registry
