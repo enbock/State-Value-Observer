@@ -5,8 +5,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/repo
-
+  working_directory: /tmp/repo
   docker:
     - image: circleci/node:latest
 
@@ -33,7 +32,7 @@ jobs:
       # run tests!
       - run: yarn test
       - persist_to_workspace:
-          root: '~'
+          root: /tmp/repo
           path: repo
 
   deploy:
