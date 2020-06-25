@@ -1,6 +1,6 @@
 # State Value Observer
-[![CircleCI](https://circleci.com/gh/enbock/State-Value-Observer/tree/master.svg?style=shield)](https://circleci.com/gh/enbock/State-Value-Observer)
-[![.github/workflows/npm-publish.yml](https://github.com/enbock/State-Value-Observer/workflows/.github/workflows/npm-publish.yml/badge.svg)](https://github.com/enbock/State-Value-Observer/actions)
+[![Testing](https://github.com/enbock/State-Value-Observer/workflows/Testing/badge.svg?branch=master)](https://github.com/enbock/State-Value-Observer/actions)
+[![Publishing](https://github.com/enbock/State-Value-Observer/workflows/Package%20publishing/badge.svg?branch=master)](https://github.com/enbock/State-Value-Observer/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/enbock/State-Value-Observer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/enbock/State-Value-Observer/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/enbock/State-Value-Observer/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/enbock/State-Value-Observer/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/enbock/State-Value-Observer/badges/build.png?b=master)](https://scrutinizer-ci.com/g/enbock/State-Value-Observer/build-status/master)
