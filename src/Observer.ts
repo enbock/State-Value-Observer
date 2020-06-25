@@ -3,16 +3,15 @@ export interface IOnChangeCallback<T> {
 }
 
 export interface IObserverAdapter<T> {
-  onChange(newValue: T): void
+  onChange: IOnChangeCallback<T>
 }
 
 export interface IObserver<T> {
   value: T
-  adapter: IObserverAdapter<T>
 }
 
 export default class Observer<T> implements IObserver<T> {
-  adapter: IObserverAdapter<T>;
+  protected adapter: IObserverAdapter<T>;
   protected current: T;
 
   constructor(initialValue: T, adapter: IObserverAdapter<T>) {
