@@ -1,21 +1,13 @@
 {
   "compilerOptions": {
-    "outDir": "build",
-    "module": "ESNext",
-    "jsx": "react",
-    "target": "ES2020",
+    "outDir": ".",
+    "declaration": true,
+    "module": "CommonJS",
+    "target": "ES5",
     "strict": true,
-    "moduleResolution": "Node",
-    "baseUrl": "src",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES6",
-      "ES2020"
-    ],
-    "rootDir": "src",
     "listEmittedFiles": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "src"
   },
   "include": [
     "src/**/*"
