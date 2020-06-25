@@ -16,29 +16,29 @@ observation pattern.
 
 ## Usage
 ```typescript
-const adapter:IObserverAdapter<string> = {
-  onChange: function (newValue:string):void {
-    console.log("Observed value was changed to:", newValue)
+const adapter: IObserverAdapter<string> = {
+  onChange: function (newValue: string): void {
+    console.log('Observed value was changed to:', newValue);
   }
-}
-const observer = new Observer<string>('initial value', adapter);
+};
+const observer: Observer<string> = new Observer<string>('initial value', adapter);
 
-observer.value = "Hello World!";
-``` 
+observer.value = 'Hello World!';
+```
 
 ## Usage of Listener Adapter
 ```typescript
-const adapter:ListenerAdapter<string> = new ListenerAdapter<string>();
-const observer = new Observer<string>('initial value', adapter);
+const adapter: ListenerAdapter<string> = new ListenerAdapter<string>();
+const observer: Observer<string> = new Observer<string>('initial value', adapter);
 
-function valueConsumer(newValue:string):void {
-  console.log("Observed value was changed to:", newValue);
+function valueConsumer(newValue: string): void {
+  console.log('Observed value was changed to:', newValue);
 }
 
 adapter.addListener(valueConsumer.bind(window));
 
-observer.value = "Hello World!";
-``` 
+observer.value = 'Hello World!';
+```
 
 ## Testing
 ```shell script

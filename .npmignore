@@ -1,5 +1,6 @@
 *
 !*.d.ts
+!index.js
 !ListenerAdapter.js
 !Observer.js
 !README.md
