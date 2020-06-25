@@ -27,31 +27,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
 
-  deploy:
-    <<: *defaults
-    filters:
-      branches:
-        only: master
-
-    steps:
-      - checkout
-      - run: yarn install
-      - run: yarn run build
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Publish package
-          command: npm publish
-
 workflows:
   version: 2
-  test_and_deploy:
+  tests:
     jobs:
       - test
-      - deploy:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
