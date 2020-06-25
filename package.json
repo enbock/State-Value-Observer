@@ -1,8 +1,10 @@
 {
   "name": "@enbock/state-value-observer",
-  "version": "0.1.1",
+  "description": "An atomic value observer pattern implementation.",
+  "version": "0.1.2",
   "homepage": "https://github.com/enbock/State-Value-Observer/",
   "license": "MIT",
+  "author": "Endre Bock <npm.dev@itbock.de>",
   "publishConfig": {
     "access": "public"
   },
