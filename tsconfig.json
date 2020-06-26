@@ -7,7 +7,8 @@
     "strict": true,
     "listEmittedFiles": true,
     "allowSyntheticDefaultImports": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "moduleResolution": "Node"
   },
   "include": [
     "src/**/*"

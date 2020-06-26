@@ -1,7 +1,7 @@
 {
   "name": "@enbock/state-value-observer",
   "description": "An atomic value observer pattern implementation.",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "homepage": "https://github.com/enbock/State-Value-Observer/",
   "license": "MIT",
   "author": "Endre Bock <npm.dev@itbock.de>",
@@ -9,9 +9,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npx tsc --build tsconfig.json -v",
-    "test": "jest --coverage --verbose",
-    "deploy": "yarn publish --non-interactive"
+    "build": "npx tsc --build tsconfig.json -v ECMA2020",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
@@ -27,6 +26,8 @@
     "roots": [
       "./src"
     ],
+    "collectCoverage": true,
+    "verbose": true,
     "collectCoverageFrom": [
       "**/*.ts"
     ],
