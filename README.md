@@ -41,6 +41,42 @@ observer.value = 'Hello World!';
 ```
 
 ## Testing
+### Using this library in our project
+This library is providing in [ECMAScript® 2020] language. When you use **jest**,
+you get this error by using my library:
+```text
+  Details:
+  
+  <YOUR_PATH>\node_modules\@enbock\state-value-observer\ListenerAdapter.js:1
+  export default class ListenerAdapter {
+  ^^^^^^
+  
+  SyntaxError: Unexpected token 'export'
+      at compileFunction (vm.js:341:18)
+```
+
+See more: https://jestjs.io/docs/en/tutorial-react-native#transformignorepatterns-customization
+#### Reason and solution
+Jest running internally on **ES5**, that does not know the ES6-imports.
+##### Force converting ES6+ Libraries
+To solve this, you have to *exclude* all my libraries from the *exclusion-list*:
+```
+"transformIgnorePatterns": [
+  "/node_modules/(?!(@enbock)/)"
+]
+```
+##### Let babel "learn" ES6+
+`babel.config.js`
+```js
+module.exports = {
+  presets: [
+    ['@babel/preset-env', {targets: {node: 'current'}}],
+    '@babel/preset-typescript'
+  ]
+};
+```
+See more: https://github.com/facebook/jest#using-typescript
+### Run tests
 ```shell script
 yarn test
 ```
@@ -49,3 +85,5 @@ yarn test
 ```shell script
 yarn build
 ```
+
+[ECMAScript® 2020]:https://tc39.es/ecma262/
