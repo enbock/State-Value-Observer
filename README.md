@@ -41,7 +41,7 @@ observer.value = 'Hello World!';
 ```
 
 ## Testing
-### Using this library in our project
+### Using this library in your project
 This library is providing in [ECMAScript® 2020] language. When you use **jest**,
 you get this error by using my library:
 ```text
