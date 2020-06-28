@@ -40,6 +40,20 @@ adapter.addListener(valueConsumer.bind(window));
 observer.value = 'Hello World!';
 ```
 
+### Listener Adapter in synchronous mode
+```typescript
+const adapter: ListenerAdapter<string> = new ListenerAdapter<string>(false);
+const observer: Observer<string> = new Observer<string>('initial value', adapter);
+
+function valueConsumer(newValue: string): void {
+  console.log('Observed value was changed to:', newValue);
+}
+
+adapter.addListener(valueConsumer.bind(window));
+
+observer.value = 'Hello World!';
+```
+
 ## Testing
 ### Using this library in your project
 This library is providing in [ECMAScript® 2020] language. When you use **jest**,

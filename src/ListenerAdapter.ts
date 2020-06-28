@@ -2,16 +2,23 @@ import {IObserverAdapter, IOnChangeCallback} from './Observer';
 
 export default class ListenerAdapter<T> implements IObserverAdapter<T> {
   protected listeners: IOnChangeCallback<T>[];
+  private readonly asyncCallbacks: boolean = true;
 
-  constructor() {
+  constructor(asyncCallbacks: boolean = true) {
+    this.asyncCallbacks = asyncCallbacks;
     this.listeners = [];
   }
 
-  public onChange(newValue: T) {
+  public onChange(newValue: T): void {
+    const runAsync: boolean = this.asyncCallbacks;
     function callListener(listener: IOnChangeCallback<T>): void {
-      setTimeout(function handler(): void {
+      if (runAsync) {
+        setTimeout(function handler(): void {
+          listener(newValue);
+        }, 1);
+      } else {
         listener(newValue);
-      }, 1);
+      }
     }
 
     this.listeners.forEach(callListener);
