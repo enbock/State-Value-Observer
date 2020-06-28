@@ -1,7 +1,7 @@
 import ListenerAdapter from './ListenerAdapter';
 import {IOnChangeCallback} from './Observer';
 
-describe('Observer.ListenerAdapter', () => {
+describe(ListenerAdapter, () => {
   it('registers and call on change', (done) => {
     const callback: IOnChangeCallback<string> = jest.fn();
     const adapter: ListenerAdapter<string> = new ListenerAdapter<string>();
@@ -12,6 +12,15 @@ describe('Observer.ListenerAdapter', () => {
       expect(callback).toHaveBeenCalledWith('new');
       done();
     }, 1);
+  });
+
+  it('registers and call on change synchronous', function (): void {
+    const callback: IOnChangeCallback<string> = jest.fn();
+    const adapter: ListenerAdapter<string> = new ListenerAdapter<string>(false);
+
+    adapter.addListener(callback);
+    adapter.onChange('new');
+    expect(callback).toHaveBeenCalledWith('new');
   });
 
   it('removes listener', () => {
