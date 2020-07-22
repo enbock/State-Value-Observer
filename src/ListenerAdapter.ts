@@ -1,7 +1,7 @@
-import {IObserverAdapter, IOnChangeCallback} from './Observer';
+import {ObserverAdapter, OnChangeCallback} from './ValueObserver';
 
-export default class ListenerAdapter<T> implements IObserverAdapter<T> {
-  protected listeners: IOnChangeCallback<T>[];
+export default class ListenerAdapter<Type> implements ObserverAdapter<Type> {
+  protected listeners: OnChangeCallback<Type>[];
   private readonly asyncCallbacks: boolean = true;
 
   constructor(asyncCallbacks: boolean = true) {
@@ -9,9 +9,9 @@ export default class ListenerAdapter<T> implements IObserverAdapter<T> {
     this.listeners = [];
   }
 
-  public onChange(newValue: T): void {
+  public onChange(newValue: Type): void {
     const runAsync: boolean = this.asyncCallbacks;
-    function callListener(listener: IOnChangeCallback<T>): void {
+    function callListener(listener: OnChangeCallback<Type>): void {
       if (runAsync) {
         setTimeout(function handler(): void {
           listener(newValue);
@@ -24,12 +24,12 @@ export default class ListenerAdapter<T> implements IObserverAdapter<T> {
     this.listeners.forEach(callListener);
   }
 
-  public addListener(callback: IOnChangeCallback<T>) {
+  public addListener(callback: OnChangeCallback<Type>) {
     this.removeListener(callback);
     this.listeners.push(callback);
   }
 
-  public removeListener(callback: IOnChangeCallback<T>) {
+  public removeListener(callback: OnChangeCallback<Type>) {
     const index: number = this.listeners.indexOf(callback);
     if (index < 0) return;
     this.listeners.splice(index, 1);
